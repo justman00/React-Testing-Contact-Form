@@ -43,7 +43,7 @@ const ContactForm = () => {
             Email*
           </label>
           <input name="email" 
-            id="lastName"
+            id="email"
             placeholder="bluebill1049@hotmail.com"
             ref={register({ required: true })} 
           />
@@ -61,10 +61,10 @@ const ContactForm = () => {
         </div>
         {data && (
           <pre style={{ textAlign: "left", color: "white" }}>
-            {JSON.stringify(data, null, 2)}
+            {JSON.stringify(data, null, 2)}  
           </pre>
         )}
-        <input type="submit" />
+        <input type="submit" /> 
       </form>
     </div>
   );
