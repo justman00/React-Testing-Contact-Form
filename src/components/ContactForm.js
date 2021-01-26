@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const ContactForm = () => {
   const [data, setData] = useState();
@@ -8,7 +9,9 @@ const ContactForm = () => {
   });
   const onSubmit = (data) => {
     setData(data);
-    //console.log(data);
+    axios
+      .post("https://reqres.in/api/users", data)
+      .then((response) => console.log(response.data));
   };
 
   return (
@@ -23,7 +26,9 @@ const ContactForm = () => {
             ref={register({ required: true, maxLength: 3 })}
           />
           {errors.firstName && (
-            <p>Looks like there was an error: {errors.firstName.type}</p>
+            <p data-test-id="firstName-error">
+              Looks like there was an error: {errors.firstName.type}
+            </p>
           )}
         </div>
 
@@ -36,7 +41,9 @@ const ContactForm = () => {
             ref={register({ required: true })}
           />
           {errors.lastName && (
-            <p>Looks like there was an error: {errors.lastName.type}</p>
+            <p data-test-id="lastName-error">
+              Looks like there was an error: {errors.lastName.type}
+            </p>
           )}
         </div>
 
@@ -49,7 +56,9 @@ const ContactForm = () => {
             ref={register({ required: true })}
           />
           {errors.email && (
-            <p>Looks like there was an error: {errors.email.type}</p>
+            <p data-test-id="email-error">
+              Looks like there was an error: {errors.email.type}
+            </p>
           )}
         </div>
         <div>
